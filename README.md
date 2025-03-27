@@ -249,4 +249,84 @@ node server.js
 
 3. **Problemas de CORS**:
    - Verificar el `origin` en la configuración de CORS
-   - Usar `Access-Control-Allow-Headers: '*'` en desarrollo
+   - Usar `Access-Control-Allow-Headers: '*'` en desarrolloPaso 4: Ejecutar el Backend
+bash
+Copy
+cd api-productos
+node server.js
+Deberías ver:
+
+bash
+Copy
+🚀 Servidor en http://localhost:3000
+Paso 5: Ejecutar el Frontend
+bash
+Copy
+cd frontend-productos
+npm run dev
+Deberías ver:
+
+bash
+Copy
+VITE v4.5.0 ready in 500 ms
+➜  Local:   http://localhost:5173/
+Paso 6: Probar el Sistema
+Abrir navegador:
+
+Frontend: http://localhost:5173
+
+Backend (opcional): http://localhost:3000/productos
+
+Flujo de creación de producto:
+
+Paso 1: Haz clic en "Nuevo Producto".
+
+Paso 2: Completa el formulario y sube una imagen.
+
+Paso 3: Verifica que el producto aparezca en el listado.
+
+Paso 7: Verificar Base de Datos
+Conéctate a MySQL:
+
+bash
+Copy
+mysql -u root -p
+USE ProdutsGroupLatam;
+Consulta los datos:
+
+sql
+Copy
+SELECT * FROM producto1;
+Deberías ver los productos creados con sus fechas automáticas.
+
+Solución de Problemas Comunes
+Error 500 al subir imágenes:
+
+Verifica las credenciales de Cloudinary en .env.
+
+Crea la carpeta uploads manualmente:
+
+bash
+Copy
+mkdir api-productos/uploads
+Conexión rechazada por MySQL:
+
+Asegúrate que el servicio esté activo.
+
+Verifica usuario/contraseña en .env.
+
+Errores CORS en el frontend:
+
+En server.js, configura CORS:
+
+javascript
+Copy
+app.use(cors({
+  origin: 'http://localhost:5173' // URL de tu frontend
+}));
+Comandos Útiles
+Acción	Comando
+Reiniciar backend	Ctrl + C → node server.js
+Reiniciar frontend	Ctrl + C → npm run dev
+Limpiar imágenes temporales	rm -rf api-productos/uploads/*
+
